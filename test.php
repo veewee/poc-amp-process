@@ -17,13 +17,19 @@ function printErrors(\Throwable $e) {
 
 
 try {
-    $responses = wait(parallelMap([
-        'https://google.com/',
-        'https://github.com/',
-        'https://stackoverflow.com/',
-    ], function ($url) {
-        return wait(require 'process.php');
-    }));
+    $responses = wait(
+        parallelMap(
+            [
+                'https://google.com/',
+                'https://github.com/',
+                'https://stackoverflow.com/',
+            ],
+            function ($url) {
+                return wait(require 'process.php');
+            },
+            new \Amp\Parallel\Worker\DefaultPool(32)
+        )
+    );
 
     var_dump($responses);
 
