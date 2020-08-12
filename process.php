@@ -7,5 +7,5 @@ if (!$url = $_SERVER['argv'][1] ?? null) {
 }
 
 
-$process = new Symfony\Component\Process\Process(['php', '-r', 'echo "'.$url.'";']);
+$process = new Symfony\Component\Process\Process(['php', '-r', 'sleep(30); echo "'.$url.'";']);
 echo $process->mustRun()->getOutput();
