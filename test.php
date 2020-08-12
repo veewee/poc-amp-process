@@ -28,19 +28,19 @@ try {
                     new LazyPromise(function () {
                         return parallel(function () {
                             $url = 'https://google.com/';
-                            return require 'process.php';
+                            return wait(require 'process.php');
                         })();
                     }),
                     new LazyPromise(function () {
                         return parallel(function () {
                             $url = 'https://github.com/';
-                            return require 'process.php';
+                            return wait(require 'process.php');
                         })();
                     }),
                     new LazyPromise(function () {
                         return parallel(function () {
                             $url = 'https://stackoverflow.com/';
-                            return require 'process.php';
+                            return wait(require 'process.php');
                         })();
                     }),
                 ],
