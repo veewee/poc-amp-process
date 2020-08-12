@@ -10,7 +10,8 @@ $responses = wait(parallelMap([
     'https://github.com/',
     'https://stackoverflow.com/',
 ], function ($url) {
-    return $url;
+    $process = new Symfony\Component\Process\Process(['php', 'process.php', $url]);
+    return $process->mustRun()->getOutput();
 }));
 
 var_dump($responses);
