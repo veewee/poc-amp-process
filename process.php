@@ -1,7 +1,11 @@
 <?php
 
+require_once __DIR__.'/vendor/autoload.php';
+
 if (!$url = $_SERVER['argv'][1] ?? null) {
     exit;
 }
 
-echo $url;
+
+$process = new Symfony\Component\Process\Process(['php', '-r', 'echo "'.$url.'";']);
+echo $process->mustRun()->getOutput();
