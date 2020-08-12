@@ -22,8 +22,7 @@ try {
         'https://github.com/',
         'https://stackoverflow.com/',
     ], function ($url) {
-        $process = new Symfony\Component\Process\Process(['php', 'process.php', $url]);
-        return $process->mustRun()->getOutput();
+        return wait(require 'process.php');
     }));
 
     var_dump($responses);
